@@ -47,8 +47,8 @@ public class LinkedList<Item>
      */
 	public void deleteFromBegining()
 	{
-	    if (this.head == null) {
-
+	    if (this.head != null) {
+	    	this.head = this.head.next;
 	    }	
 	}
 
@@ -65,12 +65,30 @@ public class LinkedList<Item>
 	    if (this.head == null) {
 	    	this.head = last;
 	    } else {
-	    	while (curr != null) {
+	    	while (curr.next != null) {
 	    		curr = curr.next;
 	    	}
 
 	    	curr.next = last;
 	    }
+	}
+
+    /**
+     * Delete an item from the end of a linked list
+     */
+	public void deleteFromEnd()
+	{
+		Node curr;
+		Node prev;
+
+		curr = this.head;
+
+		while (curr.next != null) {
+			prev = curr;
+			curr = curr.next;
+		}
+
+		prev.next = null;
 	}
 
     /**
@@ -91,6 +109,29 @@ public class LinkedList<Item>
 				curr.next = new_node;
 				break;
 			}
+
+			curr = curr.next;
 		}
+	}
+
+    /**
+     * Delete the first node from the linked list that has the given 
+     * node
+     * 
+     * @param key Item whose node is to be deleted
+     */
+	public void delete(Item key)
+	{
+	    Node curr;
+	    Node prev;
+
+	    while (curr.next != null) {
+	    	if (curr.item == key) {
+	    		prev.next = curr.next;
+	    	}
+
+	    	prev = curr;
+	    	curr = curr.next;
+	    }		
 	}
 }
