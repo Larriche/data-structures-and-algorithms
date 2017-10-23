@@ -19,13 +19,9 @@ public class LinkedList<Item>
     // The head node
 	private Node head;
 
-    // The tail node
-	private Node tail;
-
 	public LinkedList()
 	{
 		this.head = null;
-		this.tail = null;
 	}
 
     /**
@@ -51,7 +47,9 @@ public class LinkedList<Item>
      */
 	public void deleteFromBegining()
 	{
+	    if (this.head == null) {
 
+	    }	
 	}
 
     /**
@@ -61,14 +59,17 @@ public class LinkedList<Item>
      */
 	public void insertAtEnd(Item item)
 	{
-	    Node old_last = this.tail;	
 	    Node last = new Node(item);
+	    Node curr = this.head;
 
 	    if (this.head == null) {
 	    	this.head = last;
-	    	this.tail = this.head;
 	    } else {
-	    	this.old_last.next = last;
+	    	while (curr != null) {
+	    		curr = curr.next;
+	    	}
+
+	    	curr.next = last;
 	    }
 	}
 
