@@ -78,8 +78,8 @@ public class LinkedList<Item>
      */
 	public void deleteFromEnd()
 	{
-		Node curr;
-		Node prev;
+		Node curr = this.head;
+		Node prev = curr;
 
 		curr = this.head;
 
@@ -122,8 +122,8 @@ public class LinkedList<Item>
      */
 	public void delete(Item key)
 	{
-	    Node curr;
-	    Node prev;
+	    Node curr = this.head;
+	    Node prev = curr;
 
 	    while (curr.next != null) {
 	    	if (curr.item == key) {
@@ -133,5 +133,47 @@ public class LinkedList<Item>
 	    	prev = curr;
 	    	curr = curr.next;
 	    }		
+	}
+
+    /**
+     * This method searches the linked list for node with
+     * given data item and returns it
+     * 
+     * @param  item Data item
+     * @return  Node The node containning the data item
+     */
+	public Node search(Item item)
+	{
+		Node curr = this.head;
+
+		while (curr != null) {
+			if (curr.item == item) {
+				return curr;
+			}
+		}
+
+		return null;
+	}
+
+    /**
+     * Get the string representation of the linked list
+     * 
+     * @return The string representation
+     */
+	public String toString()
+	{
+	    String list = "";
+	    Node curr = this.head;
+        
+        if (curr == null) {
+        	return "No items";
+        }
+
+	    while (curr != null) {
+	    	list += curr.item.toString() + ",";
+	    	curr = curr.next;
+	    }	
+
+	    return list;
 	}
 }
