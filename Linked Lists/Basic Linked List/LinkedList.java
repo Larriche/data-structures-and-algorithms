@@ -1,3 +1,8 @@
+/**
+ * This class is a basic implementation of a linked list
+ *
+ * @author  Richman Larry Clifford 
+ */
 public class LinkedList<Item>
 {
 	private class Node
