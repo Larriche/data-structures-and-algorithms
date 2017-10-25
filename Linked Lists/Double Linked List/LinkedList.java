@@ -66,10 +66,13 @@ public class LinkedList<Item>
      */
 	public void deleteFromBegining()
 	{
-		if (this.head != null) {
-		    this.head = this.head.next;
+		Node old_head = this.head;
 
-		}		
+		if (old_head.next != null) {
+			old_head.next.prev = null;
+		}
+
+		this.head = old_head.next;
 	}
 
 	/**
