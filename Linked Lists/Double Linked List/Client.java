@@ -19,5 +19,11 @@ public class Client
 
 		list.insertAtEnd(10);
 		System.out.println(list);
+
+		list.insertAfter(10, 14);
+		System.out.println(list);
+
+		list.insertAfter(10, 11);
+		System.out.println(list);
 	}
 }

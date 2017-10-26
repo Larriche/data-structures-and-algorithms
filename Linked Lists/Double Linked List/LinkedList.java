@@ -33,6 +33,33 @@ public class LinkedList<Item>
 			this.prev = null;
 			this.next = null;
 		}
+
+        /**
+         * This method is used to view the details of a node
+         * to help in debugging
+         * 
+         * @return output string with details of the node
+         */
+		public String toString()
+		{
+			String output = "";
+
+			if (this.prev != null) {
+				output += this.prev.item;
+			} else {
+				output += "null";
+			}
+
+			output += "->" + this.item + "->";
+
+			if (this.next != null) {
+				output += this.next.item;
+			} else {
+				output += "null";
+			}
+
+			return output;
+		}
 	}
 
 	// The head node
@@ -124,6 +151,38 @@ public class LinkedList<Item>
 		}
 
 		this.tail = old_last.prev;
+	}
+
+    /**
+     * Add a new node after first node found with specified data
+     * 
+     * @param key  The item whose node we want to insert after
+     * @param data The data to store in the node
+     */
+	public void insertAfter(Item key, Item data)
+	{
+		Node new_node = new Node(data);
+		Node curr = this.head;
+
+		while (curr != null) {
+			if (curr.item == key) {
+				new_node.next = curr.next;
+
+				if (curr.next != null) {
+					curr.next.prev = new_node;
+				}
+
+				new_node.prev = curr;
+				curr.next = new_node;
+				break;
+			}
+
+			curr = curr.next;
+		}
+
+		if (new_node.next == null) {
+			this.tail = new_node;
+		}
 	}
 
 	/**
