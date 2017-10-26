@@ -38,12 +38,16 @@ public class LinkedList<Item>
 	// The head node
 	private Node head;
 
+	// The tail node
+	private Node tail;
+
     /**
      * Create a new linked list 
      */
 	public LinkedList()
 	{
 		this.head = null;
+		this.tail = null;
 	}
 
     /**
@@ -59,6 +63,11 @@ public class LinkedList<Item>
 		// Create new node and let this be the head
 		this.head = new Node(item);
 		this.head.next = old_head;
+
+		// If new node is the only node, make it tail node as well
+		if (this.tail == null) {
+			this.tail = this.head;
+		}
 	}
 
     /**
@@ -70,9 +79,51 @@ public class LinkedList<Item>
 
 		if (old_head.next != null) {
 			old_head.next.prev = null;
+		} else {
+			this.tail = null;
 		}
 
 		this.head = old_head.next;
+	}
+
+    /**
+     * Insert a node at the end of a linked list
+     * 
+     */
+	public void insertAtEnd(Item item)
+	{
+		Node new_node = new Node(item);
+
+		new_node.prev = this.tail;
+
+		if (this.tail == null) {
+			this.head = new_node;
+		} else {
+			this.tail.next = new_node;
+		}
+
+		this.tail = new_node;
+	}
+
+    /**
+     * Delete the last node in the linked list
+     */
+	public void deleteFromEnd()
+	{
+		Node old_last = this.tail;
+
+		if (this.head == null) {
+			return;
+		}
+        
+		if (this.head.next == null) {
+	        // If just one element
+			this.head = null;
+		} else {
+			old_last.prev.next = null;
+		}
+
+		this.tail = old_last.prev;
 	}
 
 	/**
