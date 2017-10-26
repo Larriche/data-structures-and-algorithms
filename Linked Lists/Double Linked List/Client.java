@@ -25,5 +25,23 @@ public class Client
 
 		list.insertAfter(10, 11);
 		System.out.println(list);
+
+		list.delete(4);
+		System.out.println(list);
+
+		list.delete(14);
+		System.out.println(list);
+
+		list.delete(10);
+		System.out.println(list);
+
+		list.delete(11);
+		System.out.println(list);
+
+		list.delete(5);
+		System.out.println(list);
+
+
+
 	}
 }

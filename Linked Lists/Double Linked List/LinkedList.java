@@ -185,8 +185,42 @@ public class LinkedList<Item>
 		}
 	}
 
+    /**
+     * Delete the first occurrence of a node with given data
+     * 
+     * @param  key Data item to look out for
+     */
+	public void delete(Item key)
+	{
+		Node curr = this.head;
+
+		while (curr != null) {
+			if (curr.item == key) {
+				if (curr.next != null) {
+					curr.next.prev = curr.prev;
+				} else {
+					// If next is null, this is the tail node,
+					// so we reset the tail to be prev node
+					this.tail = curr.prev;
+				}
+
+				if (curr.prev != null) {
+					curr.prev.next = curr.next;
+				} else {
+					// if prev is null, then curr is the head node
+					// so we reset the head to next node 
+					this.head = curr.next;
+				}
+
+				break;
+			}
+
+			curr = curr.next;
+		}
+	}
+
 	/**
-     * Get the string representation of the linked list
+     * Get the string representation of the lin  ked list
      * 
      * @return The string representation
      */
