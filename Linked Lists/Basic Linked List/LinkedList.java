@@ -155,6 +155,8 @@ public class LinkedList<Item>
 			if (curr.item == item) {
 				return curr;
 			}
+			
+			curr = curr.next
 		}
 
 		return null;
