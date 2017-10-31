@@ -86,8 +86,6 @@ public class LinkedList<Item>
 		Node curr = this.head;
 		Node prev = curr;
 
-		curr = this.head;
-
 		while (curr.next != null) {
 			prev = curr;
 			curr = curr.next;
