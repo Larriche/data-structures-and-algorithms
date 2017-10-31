@@ -86,6 +86,11 @@ public class LinkedList<Item>
 		Node curr = this.head;
 		Node prev = curr;
 
+		// If no element, return
+		if (curr == null) {
+			return;
+		}
+        
 		while (curr.next != null) {
 			prev = curr;
 			curr = curr.next;
@@ -154,7 +159,7 @@ public class LinkedList<Item>
 				return curr;
 			}
 			
-			curr = curr.next
+			curr = curr.next;
 		}
 
 		return null;
