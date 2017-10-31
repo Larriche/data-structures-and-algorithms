@@ -133,6 +133,10 @@ public class LinkedList<Item>
 	    Node curr = this.head;
 	    Node prev = curr;
 
+        if (curr == null) {
+        	return;
+        }
+        
 	    while (curr.next != null) {
 	    	if (curr.item == key) {
 	    		prev.next = curr.next;
